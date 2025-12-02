@@ -1,0 +1,20 @@
+application:
+  authentication:
+    secret-key: ${AUTH_SECRET_KEY}
+    public-routes:
+      - /api/v1/auth/**
+      - /api/v1/products # só a rota / desse controller
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: auth-service
+              uri: ${AUTH_SERVICE_URL}
+              predicates:
+                - Path=/api/v1/auth/**
+            - id: product-service
+              uri: ${PRODUCT_SERVICE_URL}
+              predicates:
+                - Path=/api/v1/products/**

@@ -7,6 +7,17 @@ services:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
       POSTGRES_DB: auth
+  gateway:
+    build: gateway
+    depends_on:
+      - auth-service
+      - product-service
+    ports:
+      - "8080:8080"
+    environment:
+      AUTH_SECRET_KEY: gustavo_santos_siqueira_secret_segura
+      AUTH_SERVICE_URL: http://auth-service:8080
+      PRODUCT_SERVICE_URL: http://product-service:8080
   auth-service:
     build: auth
     depends_on:
@@ -16,5 +27,6 @@ services:
       DATABASE_USERNAME: root
       DATABASE_PASSWORD: root
       AUTH_SECRET_KEY: gustavo_santos_siqueira_secret_segura
-    ports:
-      - "8080:8080"
+  product-service:
+    build: product
+    
