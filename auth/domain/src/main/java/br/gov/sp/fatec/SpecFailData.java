@@ -13,7 +13,7 @@ public record SpecFailData<S extends Specification<?, ?>>(
             return this;
         }
         SpecFailData<S> a = this;
-        List<S> combinedErrors = new ArrayList<S>(a.errors);
+        List<S> combinedErrors = new ArrayList<>(a.errors);
         combinedErrors.addAll(another.errors);
         return new SpecFailData<>(combinedErrors);
     }

@@ -12,11 +12,11 @@ public class MinCharsSpec implements PasswordSpec {
     }
 
     @Override
-    public SpecFailData test(String password) {
+    public SpecFailData<PasswordSpec> test(String password) {
         if(password != null && password.length() >= minChars) {
             return null;
         } else {
-            return new SpecFailData(
+            return new SpecFailData<PasswordSpec>(
                     List.of(this)
             );
         }

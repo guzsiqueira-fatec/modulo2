@@ -4,10 +4,8 @@ import br.gov.sp.fatec.policies.PasswordPolicy;
 import br.gov.sp.fatec.repositories.UserRepository;
 import br.gov.sp.fatec.services.AuthService;
 import br.gov.sp.fatec.services.PasswordHasherService;
-import br.gov.sp.fatec.services.TokenService;
 import br.gov.sp.fatec.specifications.password.MinCharsSpec;
 import br.gov.sp.fatec.specifications.password.NumericCharSpec;
-import br.gov.sp.fatec.specifications.password.PasswordSpec;
 import br.gov.sp.fatec.specifications.password.UpperCaseSpec;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,8 +13,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -32,7 +28,7 @@ public class SecurityConfig {
 
     @Bean
     public PasswordPolicy passwordPolicy() {
-        return (s) -> {
+        return s -> {
             var result = new MinCharsSpec(6)
                     .and(new NumericCharSpec())
                     .and(new UpperCaseSpec())
@@ -78,7 +74,7 @@ public class SecurityConfig {
 
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth

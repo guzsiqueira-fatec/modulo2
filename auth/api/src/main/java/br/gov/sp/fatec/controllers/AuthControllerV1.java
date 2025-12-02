@@ -29,7 +29,6 @@ public class AuthControllerV1 {
 
     @PostMapping("/login")
     public AuthResponseDto login(@Valid @RequestBody LoginRequestDto dto) {
-        System.out.println("Login attempt for email: " + dto.email());
         var token = new UsernamePasswordAuthenticationToken(
                 dto.email(),
                 dto.password()

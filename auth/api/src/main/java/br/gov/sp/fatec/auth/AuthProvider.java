@@ -1,17 +1,13 @@
 package br.gov.sp.fatec.auth;
 
-import br.gov.sp.fatec.model.TokenMetadata;
 import br.gov.sp.fatec.services.AuthService;
 import br.gov.sp.fatec.services.TokenService;
 import org.jspecify.annotations.Nullable;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Component;
-
-import java.time.LocalDateTime;
 
 @Component
 public class AuthProvider implements AuthenticationProvider {

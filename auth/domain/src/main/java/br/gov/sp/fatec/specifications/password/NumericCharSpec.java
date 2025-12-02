@@ -6,14 +6,14 @@ import java.util.List;
 
 public class NumericCharSpec implements PasswordSpec {
     @Override
-    public SpecFailData test(String password) {
+    public SpecFailData<PasswordSpec> test(String password) {
         if (password == null) {
-            return new SpecFailData(
+            return new SpecFailData<PasswordSpec>(
                     List.of(this)
             );
         }
         if(password.codePoints().noneMatch(Character::isDigit)) {
-            return new SpecFailData(
+            return new SpecFailData<PasswordSpec>(
                     List.of(this)
             );
         }

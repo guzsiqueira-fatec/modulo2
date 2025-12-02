@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.List;
 
 public class UserDetailsAdapter implements UserDetails {
-    private final User user;
+    private final transient User user; // não vai ser serializado
 
     public UserDetailsAdapter(User user) {
         this.user = user;

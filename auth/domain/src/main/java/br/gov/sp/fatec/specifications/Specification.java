@@ -1,7 +1,6 @@
 package br.gov.sp.fatec.specifications;
 
 import java.util.function.BinaryOperator;
-import java.util.function.UnaryOperator;
 
 // T -> tipo do input a ser checado (eg. string, numero, objeto xpto)
 // R -> tipo do resultado da checagem (eg. boolean (e), lista de erros (list concat), objeto resultado (regra personalizada))
