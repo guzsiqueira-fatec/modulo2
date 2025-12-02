@@ -170,3 +170,12 @@ curl http://localhost:8080/api/v1/products
 curl http://localhost:8080/api/v1/products/orders \
   -H "Authorization: Bearer <TOKEN>"
 ```
+
+## Pipeline
+A pipeline está configurada para realizar análise de qualidade de código, construir e enviar imagens Docker para o Docker Hub.
+As análises estão divididas por aplicação (Auth Service, Product Service e Gateway) e utilizam o SonarCloud para garantir a auditoria de qualidade do código.
+As URLs das analises:
+- Auth Service: https://sonarcloud.io/project/overview?id=mod2-auth
+- Product Service: https://sonarcloud.io/project/overview?id=mod2-product
+- Gateway: https://sonarcloud.io/project/overview?id=mod2-gateway
+
