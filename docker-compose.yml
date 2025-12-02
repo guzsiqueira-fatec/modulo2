@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:17
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: auth
+  auth-service:
+    build: auth
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: jdbc:postgresql://postgres:5432/auth
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: root
+      AUTH_SECRET_KEY: gustavo_santos_siqueira_secret_segura
+    ports:
+      - "8080:8080"

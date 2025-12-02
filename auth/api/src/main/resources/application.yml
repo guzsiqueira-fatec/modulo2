@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: api
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+application:
+  authentication:
+    secret-key: ${AUTH_SECRET_KEY}
+    expiration-time-in-seconds: 3600 # 1 hour
